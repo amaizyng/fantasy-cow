@@ -152,16 +152,18 @@ async function run() {
             {
                 name: "Check file naming convention",
                 test: ({ data }) => {
-                    const normalizedName = data.name.toLowerCase().replace(/ /g, '_');
-                    const expectedImageNamePng = `images/${normalizedName}.png`;
-                    const expectedImageNameJpg = `images/${normalizedName}.jpg`;
+                    const normalisedName = data.name.toLowerCase().replace(/ /g, '_');
+                    const expectedImageNamePng = `images/${normalisedName}.png`;
+                    const expectedImageNameJpg = `images/${normalisedName}.jpg`;
+                    const expectedImageNameJpeg = `images/${normalisedName}.jpeg`;
                     return (
                         data.image === expectedImageNamePng ||
-                        data.image === expectedImageNameJpg
+                        data.image === expectedImageNameJpg ||
+                        data.image === expectedImageNameJpeg
                     );
                 },
                 failMsg:
-                    `❌ Image file name in **${file.filename}** should be based on the cow's name. Expected: images/${data.name.toLowerCase().replace(/ /g, '_')}.png or .jpg`
+                    `❌ Image file name in **${file.filename}** should be based on the cow's name. Expected: images/${data.name.toLowerCase().replace(/ /g, '_')}.png or .jpg or .jpeg`
             },
             {
                 name: "Check proper indentation",
