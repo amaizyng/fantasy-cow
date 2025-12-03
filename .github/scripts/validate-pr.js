@@ -132,7 +132,7 @@ async function run() {
             {
                 name: "Check image file size",
                 test: async ({ data, imageFiles }) => {
-                    const MAX_SIZE = 200 * 1024; // 200 KB
+                    const MAX_SIZE = 250000; // 250 KB (some leeway for OS rounding)
                     const imageFile = imageFiles.find(f => f.filename === data.image);
 
                     if (!imageFile) return false;
